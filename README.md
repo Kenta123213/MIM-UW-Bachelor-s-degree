@@ -3,4 +3,4 @@ This repository contains 'larger' projects from the first two semesters of the b
 
 Only solutions belongs to me. Content of each assignment belongs to their authors.
 
-If something should not be here, please contact me at: msmilowski05@gmail.com
+If something should not be here, please contact me at: antek.cichon49@gmail.com
