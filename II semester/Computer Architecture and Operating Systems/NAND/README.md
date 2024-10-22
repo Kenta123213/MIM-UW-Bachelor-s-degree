@@ -195,11 +195,15 @@ Files with the library implementation should be linked with the following option
 -shared -Wl,--wrap=malloc -Wl,--wrap=calloc -Wl,--wrap=realloc -Wl,--wrap=reallocarray -Wl,--wrap=free -Wl
 ```
 
-## Contents
+## Attachments
 
-- The library interface is defined in the provided `nand.h` file.
-- The implementation of this library can be found in the `nand.c` file.
-- Check the `nand_example.c` file for detailed usage examples and further specifications.
+The following files are attached to the task description:
+
+- **memory_tests.c** – implementation of a library module for testing the reaction of the implementation to memory allocation failure;
+- **memory_tests.h** – declaration of the interface of the library module for testing the reaction of the implementation to memory allocation failure;
+- **nand_example.c** – example tests for the library;
+- **nand.h** – declaration of the library interface.
+
 
 ## Testing
 To run example tests:
