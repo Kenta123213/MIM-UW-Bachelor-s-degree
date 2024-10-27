@@ -1,38 +1,26 @@
+Pętlik Language Implementation
+Introduction
+This project implements a programming language called Pętlik. The syntax of the language is defined by the following grammar, with Program as the starting symbol:
 
-
-Here's a formatted README.md suitable for GitHub:
-
-markdown
-Copy code
-# Pętlik Language Implementation
-
-## Introduction
-
-This project implements a programming language called **Pętlik**. The syntax of the language is defined by the following grammar, with **Program** as the starting symbol:
-
-Program → InstructionSequence InstructionSequence → ε | InstructionSequence Instruction Instruction → Increment | Repeat Increment → Variable Repeat → '(' Variable InstructionSequence ')' Variable → 'a' | .. | 'z'
-
-css
-Copy code
-
+Program → InstructionSequence
+InstructionSequence → ε | InstructionSequence Instruction
+Instruction → Increment | Repeat
+Increment → Variable
+Repeat → '(' Variable InstructionSequence ')'
+Variable → 'a' | .. | 'z'
 The program consists only of characters enclosed in single quotes in the grammar. No other characters, including spaces or line breaks, are allowed in the source code.
 
 The program has access to 26 variables, each representing a non-negative integer.
 
-### Execution Order
+Execution Order
+Instructions derived from the InstructionSequence symbol are executed in sequence, from first to last.
 
-Instructions derived from the **InstructionSequence** symbol are executed in sequence, from first to last.
+Increment instruction, represented as a variable, is equivalent to the following C instruction:
 
-- **Increment** instruction, represented as a variable, is equivalent to the following C instruction:
-  ```c
-  ++variable;
+++variable;
 Repeat instruction, in the form (variable...), is equivalent to the following C code:
-c
-Copy code
-while (variable > 0) {
-    --variable;
-    ...
-}
+
+while (variable > 0) { --variable; ... }
 Virtual Machine Instructions
 The implementation consists of an optimizing compiler that generates code for a virtual machine and an interpreter for executing that code. The virtual machine supports the following instructions:
 
@@ -49,8 +37,6 @@ For a sequence of instructions, the compiler generates code in order from first 
 
 For the Repeat instruction, if no other Repeat instruction is nested within, meaning the parentheses contain a sequence of variables Variable0, ..., VariableN for N >= 0, and none of the variables Variable1, ..., VariableN equals Variable0, the compiler generates optimized code as follows:
 
-python
-Copy code
 ADD Variable1 Variable0
 ...
 ADD VariableN Variable0
@@ -58,15 +44,15 @@ CLR Variable0
 If these optimization conditions are not met, standard code is generated.
 
 Standard code for Increment instruction Variable:
-Copy code
+
 INC Variable
 Standard code for Repeat instruction (Variable...):
-python
-Copy code
+
 DJZ Variable End
 ...
 JMP Start
 where Start is the address of the first instruction in the sequence, and End is the address of the instruction immediately following the last instruction in the sequence.
+
 Task
 Write a program that implements the "Pętlik" language.
 
@@ -88,4 +74,3 @@ The output of the program consists of the results of executing print commands fo
 
 The value 0 is represented by the digit 0.
 Positive values start with a non-zero digit.
-
